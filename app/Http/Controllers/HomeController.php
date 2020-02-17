@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Appointment;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -28,7 +30,7 @@ class HomeController extends Controller
 
         $account = DB::table('accounts')->where('id', 1)->first();
 
-        $upcoming_appointments = \App\Appointment::upcoming();
+        $upcoming_appointments = Appointment::upcoming();
         $total_upcoming_appointments = $upcoming_appointments->count();
 
         $appointments = $upcoming_appointments->with('customer')
