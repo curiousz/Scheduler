@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    $account = DB::table('accounts')->where('id', 1)->first();
+    return view('index')->with('accountName', $account->name);
 });
 
 Auth::routes();
