@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $now = now();
+
+        $account = DB::table('accounts')->where('id', 1)->first();
+
+        $upcoming_appointments = \App\Appointment::upcoming();
+        $total_upcoming_appointments = $upcoming_appointments->count();
+
+        $appointments = $upcoming_appointments->with('customer')
+                ->orderBy('start_at')->orderBy('end_at')->take(5)
+                ->get();
+
+        //  foreach ($appointments as $appt)
+        //  {
+        //      dump($appt);
+        //  }
+        
+        return view('home', [ 'accountName' => $account->name, 'appointments' => $appointments, 'total_appointments' => $total_upcoming_appointments ]);
     }
 }
