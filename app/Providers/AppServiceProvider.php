@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $account = \App\Account::where('id', 1)->first();
+
+        view()->share('account', $account);
     }
 }

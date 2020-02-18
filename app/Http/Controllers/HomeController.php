@@ -28,8 +28,6 @@ class HomeController extends Controller
     {
         $now = now();
 
-        $account = DB::table('accounts')->where('id', 1)->first();
-
         $upcoming_appointments = Appointment::upcoming();
         $total_upcoming_appointments = $upcoming_appointments->count();
 
@@ -42,6 +40,6 @@ class HomeController extends Controller
         //      dump($appt);
         //  }
         
-        return view('home', [ 'accountName' => $account->name, 'appointments' => $appointments, 'total_appointments' => $total_upcoming_appointments ]);
+        return view('home', [ 'appointments' => $appointments, 'total_appointments' => $total_upcoming_appointments ]);
     }
 }
