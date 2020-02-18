@@ -21,8 +21,8 @@
                     @isset($appointments)
 
                         @if ($appointments->count() > 0)
-                            @if ($appointments->count() >= $total_appointments)
-                                Showing all {{ $total_appointments }} appointments.
+                            @if ($appointments->count() == $total_appointments)
+                                Showing {{ $total_appointments }} {{ Str::plural('appointment', $total_appointments) }}.
                             @endif
                             <ul id="upcoming_appointments">
 
@@ -40,7 +40,7 @@
 
                             </ul>
                             @if ($appointments->count() < $total_appointments)
-                                <a href="">view all {{ $total_appointments }} appointments</a>
+                                <a href="">view all {{ $total_appointments }} {{ Str::plural('appointment', $total_appointments) }}</a>
                             @endif
                             
                         @else
