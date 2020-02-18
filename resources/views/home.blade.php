@@ -33,7 +33,7 @@
                                     @if (!empty($appointment->customer->email)) 
                                     <a href="mailto:{{ $appointment->customer->email }}">@endif{{ $appointment->customer->name }}@if (!empty($appointment->customer->email))</a>@endif
                                     @
-                                    {{ $appointment->start_at->setTimezone('America/Denver')->format('m/d/Y H:i') }} - {{ $appointment->end_at->setTimezone('America/Denver')->format('m/d/Y H:i') }}
+                                    {{ Carbon::format_date_range($appointment->start_at->setTimezone('America/Denver'), $appointment->end_at->setTimezone('America/Denver')) }}
                                 </li>
 
                                 @endforeach
