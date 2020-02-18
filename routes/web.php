@@ -12,10 +12,9 @@
 */
 
 Route::get('/', function () {
-    $account = DB::table('accounts')->where('id', 1)->first();
-    return view('index')->with('accountName', $account->name);
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/appointments', 'AppointmentController@index')->name('appointments');
