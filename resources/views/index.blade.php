@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Welcome to {{ $accountName }}</title>
+    <title>Welcome to {{ $account->name }}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -37,7 +37,7 @@
 </head>
 
 <body>
-  <p>Welcome to <strong>{{ $accountName }}!</strong>.</p>
+  <p>Welcome to <strong>{{ $account->name }}!</strong>.</p>
 
   <p>A bunch of text here that talks about selecting a date and time for the business need.</p>
   
